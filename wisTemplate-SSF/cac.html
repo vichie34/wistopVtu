@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Discover WistopVTU - a mobile value-added service provider offering various services, including airtime/data bundles, bill payments, TV subscriptions">
+    <meta name="keywords"
+        content="WistopVTU, purchasing airtime/data bundles, bill payments, TV subscriptions, paying utility bills">
+    <link rel="shortcut icon" href="assets/uploads/logo/69255logo-removebg-preview.png" type="image/x-icon">
+
+    <link rel="apple-touch-icon" href="assets/uploads/logo/69255logo-removebg-preview.png">
+    <title>WistopVTU | Dashboard</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/uploads/logo/69255logo-removebg-preview.png">
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="public/css/modal.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="public/fontawesome-free-6.5.1-web/css/all.css">
+</head>
+
+<body id="document">
+    <!-- sidebar start -->
+
+    <div class="mobile-menu">
+        <style>
+            .brand-logo {
+                width: 60px;
+                height: 10%;
+                position: relative;
+                top: 0.4px;
+            }
+        </style>
+        <h3><img class="brand-logo" src="public/img/69255logo-removebg-preview.png" alt=""> <i class="bx bx-menu"
+                id="mbmenu"></i></h3>
+        <ul class="sidemenu hidden">
+            <li><a href="dashboard.html"><i class="bx bx-home-alt"></i>Dashboard</a></li>
+            <li><a href="NIN.html"><i class="bx bx-task"></i>NIN</a></li>
+            <li><a href="BVN.html"><i class="bx bx-task"></i>Verify BVN</a></li>
+            <li><a href="cac.html"><i class="bx bx-task"></i></a>Verify CAC</li>
+            <li><a href=""><i class="bx bx-play-circle"></i>Refer and Earn</a></li>
+            <li><a href="about.html"><i class="bx bx-dollar-circle"></i>About Us</a></li>
+            <li><a href="setting.html"><i class="bx bx-cog"></i>Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="sidebar">
+        <i class="bx bx-chevron-right dirarrow"></i>
+        <i class="bx bx-chevron-left dirarrowright"></i>
+        <ul class="sidemenu">
+            <style>
+                .brandB-logo {
+                    width: 60px;
+                    height: 10%;
+                    position: absolute;
+                    top: 0.4px;
+                    left: 3px;
+                }
+            </style>
+            <h3><img class="brandB-logo" src="public/img/69255logo-removebg-preview.png" alt=""></h3>
+            <li><a href="dashboard.html"><i class="bx bx-home-alt"></i>Dashboard</a></li>
+            <li><a href="NIN.html"><i class="bx bx-task"></i>NIN</a></li>
+            <li><a href="verify.html"><i class="bx bx-task"></i>Verify BVN</a></li>
+            <li><a href="cac.html"><i class="bx bx-task"></i>Verify CAC</a></li>
+            <li><a href=""><i class="bx bx-play-circle"></i>Refer and Earn</a></li>
+            <li><a href="about.html"><i class="bx bx-dollar-circle"></i>About Us</a></li>
+            <li><a href="setting.html"><i class="bx bx-cog"></i>Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- sidebar end -->
+
+    <!-- right-sidebar starts -->
+    <div class="right-sidebar">
+        <h2 class="greetMessage" id="greeting"></h2>
+        <div class="topicon">
+            <i class="bx bx-calendar righticon"></i>
+            <i class="bx bx-bell righticon redcircle"></i>
+            <i class="bx bx-message-dots righticon redcircle1"></i>
+            <div class="profile">
+                <img src="../assets/uploads/users/6762fa1827bfd1734539800.png" alt="">
+                <i class="bx bx-chevron-down" style="font-size: 25px;"></i>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <style>
+            .h3 {
+                margin-top: 5px;
+            }
+        </style>
+        <h3 class="h3">One-tap Services</h3>
+        <ul class="todoul">
+            <li>
+                <i class="bx bx-time"></i>
+                <p>Schedule requests <br> <span>Set Day and Time</span></p>
+            </li>
+            <li>
+                <i class="bx bx-task"></i>
+                <p>Mobile data <br> <span>Buy Now</span></p>
+            </li>
+            <li>
+                <i class="bx bx-task"></i>
+                <p>Utility <br> <span>Buy Now</span></p>
+            </li>
+
+            <li>
+                <i class="bx bx-task"></i>
+                <p>Cable Subscription <br> <span>Buy Now</span></p>
+            </li>
+
+            <li>
+                <i class="bx bx-task"></i>
+                <p>Airtime Topup <br> <span>Buy Now</span></p>
+            </li>
+        </ul>
+    </div>
+    <!-- right-sidebar ends -->
+
+    <!-- main-content starts -->
+    <div class="main-content">
+        <h2 class="greetMessage" id="greeting"></h2>
+        <div class="formWrapper">
+            <form action="https://" method="post">
+                <label for="name">Name:</label> <br>
+                <input class="form-data" type="text" name="identificaionNumber" id="Name" placeholder="123456789011"
+                    required> <br>
+                <label for="name">Address:</label> <br>
+                <input class="form-data" type="text" name="Address" id="NiN"
+                    placeholder="2 Blue street off Northside Los Angelas" required> <br>
+                <label for="name">Phone Number:</label> <br>
+                <input class="form-data" type="number" name="mobileNumber" id="phone" placeholder="+2348097654650"
+                    required> <br>
+                <label for="name">Email Address:</label> <br>
+                <input class="form-data" type="text" name="grr" id="email" placeholder="vicdev234@gmail.com" required>
+                <br>
+                <label for="name">Date of Birth:</label> <br>
+                <input class="form-data" type="date" name="DOB" id="DOB" required> <br>
+                <label for="name">NIN:</label> <br>
+                <input class="form-data" type="text" name="NIN" id="NiN" placeholder="1234567890112" required> <br>
+
+                <label for="name">Nature of business:</label> <br>
+                <input class="form-data" type="text" name="businessType" id="businessType" placeholder="Argronomics"
+                    required> <br>
+
+                <style>
+                    .business-form {
+                        display: flex;
+                        margin: 9px 0px;
+                        gap: 7px;
+                    }
+                </style>
+                <div class="business-form">
+                    <label for="name">Name of Business:</label> 
+                    <!-- <br> -->
+                    <input class="businessDetails" type="text" name="blu" id="NiN" placeholder="Blessing Agro Community" required>
+                    <!-- <br> -->
+                    <label for="name">Name of Business2:</label> 
+                    <!-- <br> -->
+                    <input class="businessDetails" type="text" name="blu" id="NiN" placeholder="Blessing Agro Community" required>
+                    <br>
+                </div>
+
+
+                <label for="name">Business Address:</label> <br>
+                <input class="form-data" type="text" name="blu" id="NiN" placeholder="Abakaliki, Ebonyi State" required>
+                <br>
+                <canvas id="signature-canvas" width="400" height="200"></canvas>
+                <button id="upload-signature">Upload Signature</button>
+                <div id="signature-status"></div>
+
+                <div class="submit-btn">
+                    <input id="wallet-card" class="submitBtn" type="submit" value="Submit">
+
+                </div>
+                <div id="wallet-modal" class="modalWallet">
+                    <div class="modal-content">
+                        <span class="close"><i class="fas fa-times"></i></span>
+                        <h2>CAC Details</h2>
+                        <p>Account: unverified</p>
+                        <div class="mini-cards">
+                            <div class="mini-card" onclick="openDeposit()">
+                                <div class=""><i class="fas fa-handshake"></i></div>
+                                <div class="mini-card-wrapper">
+                                    <h3>Add New Account</h3>
+                                    <p>Add New Business</p>
+                                </div>
+                            </div>
+                            <div class="mini-card" onclick="openWithdraw()">
+                                <div class="card-icon-wrapper"><i class="fas fa-copy"></i></div>
+                                <div class="mini-card-wrapper">
+                                    <h3>Print</h3>
+                                    <p>Get Copy</p>
+                                </div>
+                            </div>
+                            <div class="mini-card" onclick="openProfilePage()">
+                                <div class="card-icon-wrapper"><i class="fa fa-chart-simple"></i></div>
+                                <div class="mini-card-wrapper">
+                                    <h3>Transactions</h3>
+                                    <p>Manage Transactions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- main-content ends -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script>
+        const canvas = document.getElementById('signature-canvas');
+        const ctx = canvas.getContext('2d');
+        const uploadButton = document.getElementById('upload-signature');
+
+        // Handle signature drawing and upload
+        uploadButton.addEventListener('click', () => {
+            const signatureData = canvas.toDataURL();
+            // Send the signature data to the server
+            fetch('/upload-signature', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ signature: signatureData }),
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".dirarrow").click(function () {
+                $(".sidebar").addClass("sidebartoggle");
+                $(".dirarrow").hide();
+                $(".dirarrowright").show();
+                $(".sidemenu li a").css("font-size", "0");
+                $(".sidemenu li a .bx").css("font-size", "20px");
+                $(".sidebar h3 span").css("font-size", '0');
+                $(".main-content").css('width', '70%');
+                $(".right-sidebar").css('width', '25%');
+                $(".box").css('width', '22.2%');
+                $(".sidemenu li a .bx").css('padding-left', '5px');
+                $(".sidemenu li a .bx").css('padding-right', '0px');
+            });
+        });
+
+        $(".dirarrowright").click(function () {
+            $(".sidebar").removeClass("sidebartoggle");
+            $(".dirarrowright").hide();
+            $(".dirarrow").show();
+            $(".sidemenu li a").css("font-size", "16px");
+            $(".sidemenu li a .bx").css("font-size", "20px");
+            $(".sidebar h3 span").css("font-size", '18px');
+            $(".main-content").css('width', '55%');
+            $(".right-sidebar").css('width', '20%');
+            $(".box").css('width', '21%');
+            $(".sidemenu li a .bx").css('padding-left', '5px');
+            $(".sidemenu li a .bx").css('padding-right', '10px');
+        });
+
+        $("#mbmenu").click(function () {
+            $(".mobile-menu .sidemenu").toggleClass("hidden");
+        })
+    </script>
+    <script>
+
+        // WALLET MODAL
+        const walletCard = document.getElementById("wallet-card")
+        const walletModal = document.getElementById("wallet-modal");
+        const closeModal = document.querySelector(".close");
+
+        walletCard.addEventListener("click", () => {
+            walletModal.style.display = "block";
+        });
+
+        closeModal.addEventListener("click", () => {
+            walletModal.style.display = "none";
+        });
+
+        window.addEventListener("click", (e) => {
+            if (e.target === walletModal) {
+                walletModal.style.display = "none";
+            }
+        });
+
+
+        // PROFILE PAGE-MODAL
+        const profilePageModal = document.getElementById("profile-page-modal");
+
+        function openProfilePage() {
+            profilePageModal.style.display = "block";
+        }
+
+        function closeProfilePage() {
+            profilePageModal.style.display = "none";
+        }
+    </script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html>

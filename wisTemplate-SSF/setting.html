@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Discover WistopVTU - a mobile value-added service provider offering various services, including airtime/data bundles, bill payments, TV subscriptions">
+    <meta name="keywords"
+        content="WistopVTU, purchasing airtime/data bundles, bill payments, TV subscriptions, paying utility bills">
+    <link rel="shortcut icon" href="assets/uploads/logo/69255logo-removebg-preview.png" type="image/x-icon">
+
+    <link rel="apple-touch-icon" href="assets/uploads/logo/69255logo-removebg-preview.png">
+    <title>WistopVTU | Settings</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/uploads/logo/69255logo-removebg-preview.png">
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="public/css/modal.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="public/fontawesome-free-6.5.1-web/css/all.css">
+</head>
+
+<body id="document">
+    <!-- sidebar start -->
+
+    <div class="mobile-menu">
+        <style>
+            .brand-logo {
+                width: 60px;
+                height: 10%;
+                position: relative;
+                top: 0.4px;
+            }
+        </style>
+        <h3><img class="brand-logo" src="public/img/69255logo-removebg-preview.png" alt=""> <i class="bx bx-menu"
+                id="mbmenu"></i></h3>
+        <ul class="sidemenu hidden">
+
+            <li><a href="dashboard.html"><i class="bx bx-home-alt"></i>Home</a></li>
+            <li><a href="business.html"><i class="bx bx-bar-chart-square"></i>Business</a></li>
+            <li><a href="blog.html"><i class="bx bx-cart"></i>Services</a></li>
+            <li><a href=""><i class="bx bx-envelope"></i>Affilate</a></li>
+            <li><a href=""><i class="bx bx-play-circle"></i>Refer and Earn</a></li>
+            <li><a href="about.html"><i class="bx bx-dollar-circle"></i>About Us</a></li>
+            <li><a href="setting.html"><i class="bx bx-user-cog"></i>Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="sidebar">
+        <i class="bx bx-chevron-right dirarrow"></i>
+        <i class="bx bx-chevron-left dirarrowright"></i>
+        <ul class="sidemenu">
+            <style>
+                .brandB-logo {
+                    width: 60px;
+                    height: 10%;
+                    position: absolute;
+                    top: 0.4px;
+                    left: 3px;
+                }
+            </style>
+            <h3><img class="brandB-logo" src="public/img/69255logo-removebg-preview.png" alt=""></h3>
+            <li><a href="dashboard.html"><i class="bx bx-home-alt"></i>Dashboard</a></li>
+            <li><a href="business.html"><i class="bx bx-bar-chart-square"></i>Business</a></li>
+            <li><a href="../blog.html"><i class="bx bx-cart"></i>Services</a></li>
+            <li><a href=""><i class="bx bx-envelope"></i>Affilate</a></li>
+            <li><a href=""><i class="bx bx-play-circle"></i>Refer and Earn</a></li>
+            <li><a href="about.html"><i class="bx bx-dollar-circle"></i>About Us</a></li>
+            <li><a href="setting.html"><i class="bx bx-cog"></i>Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- sidebar end -->
+
+    <!-- right-sidebar starts -->
+    <div class="right-sidebar">
+        <h2 class="greetMessage" id="greeting"></h2>
+        <div class="topicon">
+            <i class="bx bx-moon righticon"></i>
+            <i class="bx bx-bell righticon redcircle"></i>
+            <i class="bx bx-message-dots righticon redcircle1"></i>
+            <div class="profile">
+                <img src="assets/uploads/users/6762fa1827bfd1734539800.png" alt="">
+                <i class="bx bx-chevron-down" style="font-size: 25px;"></i>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <style>
+            .h3 {
+                margin-top: 5px;
+            }
+        </style>
+        <h3 class="h3">SETTINGS</h3>
+        <ul class="todoul">
+            <li>
+                <i class="bx bx-time"></i>
+                <p>Update Profile <br> <span></span></p>
+            </li>
+            <li onclick="uploadPic()">
+                <i class="bx bx-task"></i>
+                <p>Upload Picture<br> <span>Upload</span></p>
+            </li>
+            <li>
+                <i class="bx bx-task"></i>
+                <p>Update Location <br> <span>Abuja, Nigeria</span></p>
+            </li>
+            <h3 class="h3">SECURITY</h3>
+
+
+            <li>
+                <i class="bx bx-task"></i>
+                <p>Update Password <br> <span>View Now</span></p>
+            </li>
+
+            <li>
+                <i class="bx bx-task"></i>
+                <p>KYC <br> <span>know your customer</span></p>
+            </li>
+
+            <li>
+                <i class="bx bx-task"></i>
+                <p>Change PIN <br> <span>****</span></p>
+            </li>
+
+            <li>
+                <i class="bx bx-coin"></i>
+                <p>Pay with crypto <br> <span>Bitcoin, Etherum, Solana...</span></p>
+            </li>
+        </ul>
+        <div class="boardbox">
+            <h3>ACTIONS</h3>
+            <style>
+                .one-tap {
+                    padding: 2px;
+                }
+            </style>
+            <div class="one-tap">
+                <p class="meet_p">LOGOUT</p>
+                <p class="meet_p1"></p>
+            </div>
+
+            <div class="one-tap">
+                <p class="meet_x">Delete Account</p>
+                <p class="meet_p1"></p>
+            </div>
+        </div>
+    </div>
+    <!-- right-sidebar ends -->
+
+    <!-- main-content starts -->
+    <div class="main-content">
+        <!-- <h2 class="greetMessage" id="greeting"></h2>-->
+
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Recent Activities</h2>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Action (ID)</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Startimes</td>
+                        <td> NOVA bouquet</td>
+                        <td><span class="status delivered">Successful</span></td>
+                    </tr>
+                    <tr>
+                        <td>Airtime Top-up</td>
+                        <td>MTN</td>
+                        <td><span class="status inprogress">In Progress</span></td>
+                    </tr>
+                    <tr>
+                        <td>Data purchase</td>
+                        <td>GLO</td>
+                        <td><span class="status inprogress">In Progress</span></td>
+                    </tr>
+                    <tr>
+                        <td>Bills Payment</td>
+                        <td>Remitta</td>
+                        <td><span class="status delivered">Successful</span></td>
+                    </tr>
+                    <tr>
+                        <td>EEDC token purchase</td>
+                        <td>Utility</td>
+                        <td><span class="status returned">Failed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Data</td>
+                        <td>AIRTEL</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>DSTV</td>
+                        <td>Cable subscriptions</td>
+                        <td><span class="status delivered">Successful</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="clearfix"></div>
+        <footer>
+            <style>
+                .website {
+                    padding: 10px;
+                    margin: 10px;
+                }
+            </style>
+            <div class="website">
+                <a href="https://wistop-ng.netlify.app">Visit official site</a>
+            </div>
+        </footer>
+    </div>
+    <!-- main-content ends -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".dirarrow").click(function () {
+                $(".sidebar").addClass("sidebartoggle");
+                $(".dirarrow").hide();
+                $(".dirarrowright").show();
+                $(".sidemenu li a").css("font-size", "0");
+                $(".sidemenu li a .bx").css("font-size", "20px");
+                $(".sidebar h3 span").css("font-size", '0');
+                $(".main-content").css('width', '70%');
+                $(".right-sidebar").css('width', '25%');
+                $(".box").css('width', '22.2%');
+                $(".sidemenu li a .bx").css('padding-left', '5px');
+                $(".sidemenu li a .bx").css('padding-right', '0px');
+            });
+        });
+
+        $(".dirarrowright").click(function () {
+            $(".sidebar").removeClass("sidebartoggle");
+            $(".dirarrowright").hide();
+            $(".dirarrow").show();
+            $(".sidemenu li a").css("font-size", "16px");
+            $(".sidemenu li a .bx").css("font-size", "20px");
+            $(".sidebar h3 span").css("font-size", '18px');
+            $(".main-content").css('width', '55%');
+            $(".right-sidebar").css('width', '20%');
+            $(".box").css('width', '21%');
+            $(".sidemenu li a .bx").css('padding-left', '5px');
+            $(".sidemenu li a .bx").css('padding-right', '10px');
+        });
+
+        $("#mbmenu").click(function () {
+            $(".mobile-menu .sidemenu").toggleClass("hidden");
+        });
+    </script>
+    <script>
+        function uploadPic(){
+            window.location.href = "upload-profile.html";
+        }
+    </script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html>

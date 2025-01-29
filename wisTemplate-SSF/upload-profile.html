@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Profile Picture</title>
+</head>
+<style>
+    .profile-photo-container{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0.2);
+    }
+    .profile-photo-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }    
+</style>
+<body>
+    <div class="profile-photo-container">
+        <img src="" id="profile-photo-image" alt="profile photo">
+    </div>
+    <input type="file" name="" id="profile-photo-input" accept="image/*">
+    <script>
+        const profilePhotoInput = document.getElementById("profile-photo-input");
+        const profilePhotoContainer = document.getElementById("profile-photo-container");
+        const profilePhotoImage = document.getElementById("profile-photo-image");
+
+        profilePhotoInput.addEventListener("change", (e) => {
+            // get selected File
+            const selectedFile = e.target.files[0];
+
+            if (selectedFile) {
+                const fileReader = new FileReader();
+                fileReader.addEventListener("load", (e) => {
+                    const uploadedImageData = e.target.result;
+
+                    const imageElement = document.createElement("img");
+                    imageElement.src = uploadedImageData;
+                    imageElement.style.width = "100%";
+                    imageElement.style.height = "auto";
+                    imageElement.style.borderRadius = "50%";
+                    imageElement.style.objectFit = "cover";
+
+                    profilePhotoContainer.innerHTML = "";
+                    profilePhotoContainer.appendChild(imageElement);
+                    // profilePhotoImage.src.uploadedImageData;
+                });
+                fileReader.readAsDataURL(selectedFile);
+            }
+        });
+    </script>
+</body>
+
+</html>
