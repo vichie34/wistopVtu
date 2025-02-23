@@ -225,6 +225,11 @@
             })
         </script>
         <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+        <script src="">
+            fetch("/api/payment")
+            .then(response => response.json())
+            .then(vtu => console.log(payment))
+        </script>
 </body>
 
 </html>

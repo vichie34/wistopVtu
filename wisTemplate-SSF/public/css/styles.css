@@ -24,6 +24,7 @@ body {
 
 .clearfix {
     clear: both;
+    color: #0b6497f5;
 }
 
 /* SIDEBAR */
@@ -510,7 +511,14 @@ table tr td {
     background: linear-gradient(90deg, var(--themesidetagbg) 0%, var(--background-b) 100%);
 
 }
-
+/*structure 
+*intro
+*literature review
+*methodology
+*result/discusion
+*conclusions
+*references(apa referencing style)
+ */
 form label {
     color: var(--font-color);
     font-size: x-large;

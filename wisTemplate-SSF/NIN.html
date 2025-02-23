@@ -198,10 +198,6 @@
 
         function openProfilePage() {
             profilePageModal.style.display = "block";
-
-            // const username = document.getElementById("username");
-            // const email = document.getElementById("email");
-            // const bio = document.getElementById("bio");
         }
 
         function closeProfilePage() {
@@ -209,6 +205,11 @@
         }
     </script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="">
+        fetch("/api/nin")
+        .then(response => response.json())
+        .then(vtu => console.log(nin))
+    </script>
 </body>
 
 </html>
