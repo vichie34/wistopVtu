@@ -104,7 +104,7 @@
                                     <a class="pl-0" href="https://www.facebook.com/"><i
                                             class="fab fa-facebook-f"></i></a>
                                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://bd.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
                                     <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
@@ -666,25 +666,25 @@
                         <h5 class="h5">Useful Links</h5>
                         <ul class="">
                             <li>
-                                <a href="index.html"><i class="icofont-thin-right"></i> WistopVTU App</a>
+                                <a href="/index"><i class="icofont-thin-right"></i> WistopVTU App</a>
                             </li>
                             <li>
-                                <a href="about.html"><i class="icofont-thin-right"></i> About Us</a>
+                                <a href="/about"><i class="icofont-thin-right"></i> About Us</a>
                             </li>
                             <li>
-                                <a href="blog.html"><i class="icofont-thin-right"></i> Services</a>
+                                <a href="/blog"><i class="icofont-thin-right"></i> Services</a>
                             </li>
                             <li>
-                                <a href="faq.html"><i class="icofont-thin-right"></i> FAQ</a>
+                                <a href="/faq"><i class="icofont-thin-right"></i> FAQ</a>
                             </li>
 
 
                             <li>
-                                <a href="terms-amp-conditions/33.html"><i class="icofont-thin-right"></i> Terms &amp;
+                                <a href="terms-amp-conditions/33"><i class="icofont-thin-right"></i> Terms &amp;
                                     Conditions</a>
                             </li>
                             <li>
-                                <a href="privacy-policy/34.html"><i class="icofont-thin-right"></i> Privacy Policy</a>
+                                <a href="privacy-policy/34"><i class="icofont-thin-right"></i> Privacy Policy</a>
                             </li>
                         </ul>
                     </div>
@@ -729,9 +729,6 @@
             <div class="modal-content">
                 <div class="btn-close">&times;</div>
                 <div class="modal-container">
-                    <!-- <iframe width="100%" height="100%" src="https://youtu.be/ZEef64bwHkc?si=h9nb2QNGHMRlLeQe"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe> -->
                     <a href="https://youtu.be/ZEef64bwHkc?si=h9nb2QNGHMRlLeQe">
                         <iframe width="560" height="315" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -780,8 +777,8 @@
                             </div>
 
                             <div class="btn-area">
-                                <button class="btn-login login-auth-btn" type="submit"><span><a
-                                            href="/dashboard">Login</a></span></button>
+                                <button class="btn-login login-auth-btn" type="submit"><span>Login</span>
+                                </button>
                             </div>
 
                             <div class="login-query mt-30 text-center">
@@ -1453,34 +1450,33 @@
     <script src="assets/global/js/pusher.min.js"></script>
     <script src="assets/global/js/vue.min.js"></script>
     <script src="assets/global/js/axios.min.js"></script>
-
     <script src="assets/themes/deepblue/js/script.js"></script>
 
 
     <script>
         "use strict";
         (function ($) {
-            $(document).on('click', '.investNow', function () {
-                $("#investment-modal").toggleClass("modal-open");
-                let data = $(this).data('resource');
-                let price = $(this).data('price');
-                let symbol = "$";
-                let currency = "USD";
-                $('.price-range').text(`Invest: ${price}`);
+            // $(document).on('click', '.investNow', function () {
+            //     $("#investment-modal").toggleClass("modal-open");
+            //     let data = $(this).data('resource');
+            //     let price = $(this).data('price');
+            //     let symbol = "$";
+            //     let currency = "USD";
+            //     $('.price-range').text(`Invest: ${price}`);
 
-                if (data.fixed_amount == '0') {
-                    $('.invest-amount').val('');
-                    $('#amount').attr('readonly', false);
-                } else {
-                    $('.invest-amount').val(data.fixed_amount);
-                    $('#amount').attr('readonly', true);
-                }
+            //     if (data.fixed_amount == '0') {
+            //         $('.invest-amount').val('');
+            //         $('#amount').attr('readonly', false);
+            //     } else {
+            //         $('.invest-amount').val(data.fixed_amount);
+            //         $('#amount').attr('readonly', true);
+            //     }
 
-                $('.profit-details').html(`<strong> Interest: ${(data.profit_type == '1') ? `${data.profit} %` : `${data.profit} ${currency}`}  </strong>`);
-                $('.profit-validity').html(`<strong>  Per ${data.schedule} hours ,  ${(data.is_lifetime == '0') ? `${data.repeatable} times` : `Lifetime`} </strong>`);
-                $('.plan-name').text(data.name);
-                $('.plan-id').val(data.id);
-            });
+            //     $('.profit-details').html(`<strong> Interest: ${(data.profit_type == '1') ? `${data.profit} %` : `${data.profit} ${currency}`}  </strong>`);
+            //     $('.profit-validity').html(`<strong>  Per ${data.schedule} hours ,  ${(data.is_lifetime == '0') ? `${data.repeatable} times` : `Lifetime`} </strong>`);
+            //     $('.plan-name').text(data.name);
+            //     $('.plan-id').val(data.id);
+            // });
 
 
 
@@ -1534,8 +1530,8 @@
 
     <script>
         fetch("/api/vtu")
-        .then(response => response.json())
-        .then(vtu => console.log(vtu))
+            .then(response => response.json())
+            .then(vtu => console.log(vtu))
     </script>
 </body>
 
