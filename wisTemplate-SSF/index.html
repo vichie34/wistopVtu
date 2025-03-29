@@ -1456,30 +1456,6 @@
     <script>
         "use strict";
         (function ($) {
-            // $(document).on('click', '.investNow', function () {
-            //     $("#investment-modal").toggleClass("modal-open");
-            //     let data = $(this).data('resource');
-            //     let price = $(this).data('price');
-            //     let symbol = "$";
-            //     let currency = "USD";
-            //     $('.price-range').text(`Invest: ${price}`);
-
-            //     if (data.fixed_amount == '0') {
-            //         $('.invest-amount').val('');
-            //         $('#amount').attr('readonly', false);
-            //     } else {
-            //         $('.invest-amount').val(data.fixed_amount);
-            //         $('#amount').attr('readonly', true);
-            //     }
-
-            //     $('.profit-details').html(`<strong> Interest: ${(data.profit_type == '1') ? `${data.profit} %` : `${data.profit} ${currency}`}  </strong>`);
-            //     $('.profit-validity').html(`<strong>  Per ${data.schedule} hours ,  ${(data.is_lifetime == '0') ? `${data.repeatable} times` : `Lifetime`} </strong>`);
-            //     $('.plan-name').text(data.name);
-            //     $('.plan-id').val(data.id);
-            // });
-
-
-
             $(".btn-close-investment").on('click', function () {
                 $("#investment-modal").removeClass("modal-open");
             });
