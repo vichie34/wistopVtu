@@ -8,7 +8,7 @@ async function getData() {
         // make GET request
         const response = await fetch(`${apiEndpoint}/data`);
         const data = await response.json();
-        document.getElementById("data-container").innerHTML = data.message;
+        // document.getElementById("data-container").innerHTML = data.message;
     }
 
     // update the web page with received data
