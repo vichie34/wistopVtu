@@ -20,6 +20,216 @@
     <link rel="stylesheet" href="public/fontawesome-free-6.5.1-web/css/all.css">
 </head>
 
+<style>
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    .error-message {
+        color: red;
+        background-color: #ffeeee;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .success-message {
+        color: green;
+        background-color: #eeffee;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .warning-message {
+        color: #856404;
+        background-color: #fff3cd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    select,
+    input,
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+    .transaction-history {
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    table thead {
+        background-color: #f2f2f2;
+    }
+
+    /* Loading spinner */
+    .spinner {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 3px solid rgba(255,255,255,.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 5px;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    /* Balance display */
+    .balance-display {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .balance-text {
+        font-size: 16px;
+        color: #495057;
+    }
+
+    .balance-amount {
+        font-size: 18px;
+        font-weight: bold;
+        color: #28a745;
+    }
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        width: 80%;
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .modal-header h2 {
+        margin: 0;
+    }
+
+    .close-modal {
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .modal-body {
+        margin-bottom: 20px;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .modal-footer button {
+        margin-left: 10px;
+        width: auto;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+
+    .payment-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .payment-option {
+        flex: 1 0 calc(50% - 10px);
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .payment-option:hover {
+        border-color: #4CAF50;
+        background-color: #f8f9fa;
+    }
+
+    .payment-option.selected {
+        background-color: #e8f5e9;
+        border-color: #4CAF50;
+        font-weight: bold;
+    }
+
+    .payment-option img {
+        height: 40px;
+        margin-bottom: 5px;
+    }
+</style>
+
 <body id="document">
     <!-- sidebar start -->
 
@@ -111,61 +321,105 @@
     <div class="main-content">
         <h2 class="greetMessage" id="greeting"></h2>
         <div class="formWrapper">
-            <form action="https://" method="post">
-                <div class="form-group mb-30">
+            <!-- IMPORTANT: Remove the outer form tag to prevent redirection -->
+            <div class="container">
+                <h1>💸 Virtual Top Up Nigeria</h1>
 
+                <div id="error-container" class="error-message" style="display: none;"></div>
+                <div id="success-container" class="success-message" style="display: none;"></div>
+                <div id="warning-container" class="warning-message" style="display: none;"></div>
 
-                    <div class="input-group ">
-                        <label for="bank">Network</label>
-                        <div class="input-group-prepend w-50">
-                            <select name="phone_code" class="form-control form-data country_code dialCode-change"
-                                placeholder="nn">
-                                <option value="AIRTEL" data-name="airtel" data-code="AD"> AIRTEL
-                                </option>
-                                <option value="GLO" data-name="glo" data-code="ZM"> GLO
-                                </option>
-                                <option value="MTN" data-name="mtn" data-code="ZW"> MTN
-                                </option>
-                                <option value="9MOBILE" data-name="9mobile" data-code="ZW"> 9MOBILE
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <label for="name">Amount:</label> <br>
-                    <input class="form-data" type="number" name="amount" id="amount" placeholder="100 NGN" required>
-                    <br>
-                    <label for="name">Recipient:</label> <br>
-                    <input class="form-data" type="number" name="mobileNumber" id="phone" placeholder="08012345678"
-                        required> <br>
-                    <div class="submit-btn">
-                        <input id="wallet-card" class="submitBtn" type="submit" value="Submit">
+                <!-- Account balance display -->
+                <div class="balance-display">
+                    <span class="balance-text">Your Balance:</span>
+                    <span class="balance-amount">₦<span id="account-balance">0.00</span></span>
+                </div>
 
-                    </div>
-            </form>
+                <form id="topup-form" onsubmit="event.preventDefault(); processPayment(); return false;">
+                    <select id="service-type" required>
+                        <option value="airtime">Airtime Purchase</option>
+                        <option value="subscription">Subscription Payment</option>
+                        <option value="remita">Remita Payment</option>
+                    </select>
+
+                    <input type="tel" id="phone-number" placeholder="Phone Number (e.g., 08012345678)" required />
+
+                    <input type="number" id="amount" placeholder="Amount (₦)" required min="1" max="100000" />
+
+                    <button id="process-button" type="submit">Process Payment</button>
+                    <button id="fund-account-button" type="button" onclick="openFundAccountModal()">Fund Your Account</button>
+                </form>
+
+                <div class="transaction-history">
+                    <h2>Transaction History</h2>
+                    <table id="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Service Type</th>
+                                <th>Phone Number</th>
+                                <th>Amount (₦)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaction-body">
+                            <!-- Transaction history will be populated here -->
+                            <tr>
+                                <td colspan="5">No transactions yet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
     <!-- main-content ends -->
 
+    <!-- Fund Account Modal -->
+    <div id="fund-account-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Fund Your Account</h2>
+                <span class="close-modal" onclick="closeFundAccountModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="fund-error" class="error-message" style="display: none;"></div>
+                
+                <label for="fund-amount">Amount to Fund (₦):</label>
+                <input type="number" id="fund-amount" placeholder="Enter amount" min="100" step="100" required>
+                
+                <p>Select Payment Method:</p>
+                <div class="payment-options">
+                    <div class="payment-option" onclick="selectPaymentMethod('card')" data-method="card">
+                        <img src="public/img/credit-card.png" alt="Credit Card">
+                        <p>Credit/Debit Card</p>
+                    </div>
+                    <div class="payment-option" onclick="selectPaymentMethod('bank')" data-method="bank">
+                        <img src="public/img/bank-transfer.png" alt="Bank Transfer">
+                        <p>Bank Transfer</p>
+                    </div>
+                    <div class="payment-option" onclick="selectPaymentMethod('ussd')" data-method="ussd">
+                        <img src="public/img/ussd.png" alt="USSD">
+                        <p>USSD</p>
+                    </div>
+                    <div class="payment-option" onclick="selectPaymentMethod('wallet')" data-method="wallet">
+                        <img src="public/img/wallet.png" alt="Digital Wallet">
+                        <p>Digital Wallet</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeFundAccountModal()">Cancel</button>
+                <button id="confirm-fund" onclick="fundAccount()">Continue</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
-    <script>
-        const canvas = document.getElementById('signature-canvas');
-        const ctx = canvas.getContext('2d');
-        const uploadButton = document.getElementById('upload-signature');
-
-        // Handle signature drawing and upload
-        uploadButton.addEventListener('click', () => {
-            const signatureData = canvas.toDataURL();
-            // Send the signature data to the server
-            fetch('/upload-signature', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ signature: signatureData }),
-            });
-        });
-    </script>
+    
     <script type="text/javascript">
         $(document).ready(function () {
             $(".dirarrow").click(function () {
@@ -199,39 +453,476 @@
 
         $("#mbmenu").click(function () {
             $(".mobile-menu .sidemenu").toggleClass("hidden");
-        })
+        });
+
+        // Set greeting message
+        document.addEventListener('DOMContentLoaded', function() {
+            const hour = new Date().getHours();
+            let greetingText = "Hello";
+            
+            if (hour < 12) {
+                greetingText = "Good Morning";
+            } else if (hour < 18) {
+                greetingText = "Good Afternoon";
+            } else {
+                greetingText = "Good Evening";
+            }
+            
+            const greetingElements = document.querySelectorAll('.greetMessage');
+            greetingElements.forEach(element => {
+                element.textContent = greetingText;
+            });
+
+            // Initial load of account balance
+            fetchAccountBalance();
+        });
     </script>
     <script>
-
-        // WALLET MODAL
-        const walletCard = document.getElementById("wallet-card")
-        const walletModal = document.getElementById("wallet-modal");
-        const closeModal = document.querySelector(".close");
-
-        walletCard.addEventListener("click", () => {
-            walletModal.style.display = "block";
-        });
-
-        closeModal.addEventListener("click", () => {
-            walletModal.style.display = "none";
-        });
-
-        window.addEventListener("click", (e) => {
-            if (e.target === walletModal) {
-                walletModal.style.display = "none";
-            }
-        });
-
-
         // PROFILE PAGE-MODAL
         const profilePageModal = document.getElementById("profile-page-modal");
 
         function openProfilePage() {
-            profilePageModal.style.display = "block";
+            if (profilePageModal) {
+                profilePageModal.style.display = "block";
+            }
         }
 
         function closeProfilePage() {
-            profilePageModal.style.display = "none";
+            if (profilePageModal) {
+                profilePageModal.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        // Utility functions for validation
+        function validatePhoneNumber(phone) {
+            const phoneRegex = /^(0|\+234)[7-9][0-1]\d{8}$/;
+            return phoneRegex.test(phone);
+        }
+
+        function validateAmount(amount) {
+            return amount > 0 && amount <= 100000;
+        }
+
+        // DOM Elements
+        const form = document.getElementById('topup-form');
+        const serviceTypeSelect = document.getElementById('service-type');
+        const phoneNumberInput = document.getElementById('phone-number');
+        const amountInput = document.getElementById('amount');
+        const errorContainer = document.getElementById('error-container');
+        const successContainer = document.getElementById('success-container');
+        const warningContainer = document.getElementById('warning-container');
+        const transactionBody = document.getElementById('transaction-body');
+        const processButton = document.getElementById('process-button');
+        const accountBalanceDisplay = document.getElementById('account-balance');
+        const fundAccountModal = document.getElementById('fund-account-modal');
+        const fundAmountInput = document.getElementById('fund-amount');
+        const fundErrorDisplay = document.getElementById('fund-error');
+
+        // Keep track of account balance (in real app would come from server)
+        let accountBalance = 0;
+        let selectedPaymentMethod = null;
+        
+        // Mock transaction history
+        let transactionHistory = [];
+
+        // Error and success message handling
+        function showError(message) {
+            errorContainer.textContent = message;
+            errorContainer.style.display = 'block';
+            successContainer.style.display = 'none';
+            warningContainer.style.display = 'none';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                errorContainer.style.display = 'none';
+            }, 5000);
+        }
+
+        function hideError() {
+            errorContainer.textContent = '';
+            errorContainer.style.display = 'none';
+        }
+        
+        function showSuccess(message) {
+            successContainer.textContent = message;
+            successContainer.style.display = 'block';
+            errorContainer.style.display = 'none';
+            warningContainer.style.display = 'none';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                successContainer.style.display = 'none';
+            }, 5000);
+        }
+
+        function showWarning(message) {
+            warningContainer.textContent = message;
+            warningContainer.style.display = 'block';
+            errorContainer.style.display = 'none';
+            successContainer.style.display = 'none';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                warningContainer.style.display = 'none';
+            }, 5000);
+        }
+
+        function showFundError(message) {
+            fundErrorDisplay.textContent = message;
+            fundErrorDisplay.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                fundErrorDisplay.style.display = 'none';
+            }, 5000);
+        }
+
+        // Fetch account balance from server
+        async function fetchAccountBalance() {
+            try {
+                // In a real implementation, this would be an API call to get the user's balance
+                // For this demo, we'll just use the accountBalance variable
+                updateBalanceDisplay();
+            } catch (error) {
+                console.error('Error fetching balance:', error);
+                accountBalance = 0;
+                updateBalanceDisplay();
+            }
+        }
+
+        // Update the balance display in the UI
+        function updateBalanceDisplay() {
+            if (accountBalanceDisplay) {
+                accountBalanceDisplay.textContent = accountBalance.toFixed(2);
+            }
+        }
+
+        // Add transaction to history
+        function addTransaction(type, phoneNumber, amount, status) {
+            const transaction = {
+                timestamp: new Date().toISOString(),
+                serviceType: type,
+                phoneNumber: phoneNumber,
+                amount: amount,
+                status: status
+            };
+            
+            transactionHistory.unshift(transaction); // Add to beginning of array
+            refreshTransactionHistory(); // Update the UI
+        }
+
+        // Refresh transaction history display
+        function refreshTransactionHistory() {
+            if (!transactionBody) return;
+            
+            transactionBody.innerHTML = '';
+            
+            if (transactionHistory.length === 0) {
+                transactionBody.innerHTML = `
+                    <tr>
+                        <td colspan="5">No transactions yet</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            transactionHistory.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${new Date(transaction.timestamp).toLocaleString()}</td>
+                    <td>${transaction.serviceType}</td>
+                    <td>${transaction.phoneNumber}</td>
+                    <td>₦${parseFloat(transaction.amount).toFixed(2)}</td>
+                    <td>${transaction.status}</td>
+                `;
+                transactionBody.appendChild(row);
+            });
+        }
+
+        // Process payment 
+        async function processPayment() {
+            hideError();
+
+            const phoneNumber = phoneNumberInput.value.trim();
+            const amountStr = amountInput.value.trim();
+            const amount = parseFloat(amountStr);
+            const serviceType = serviceTypeSelect.value;
+
+            // Comprehensive input validation
+            if (!phoneNumber) {
+                showError('Please enter a phone number');
+                phoneNumberInput.focus();
+                return;
+            }
+
+            if (!validatePhoneNumber(phoneNumber)) {
+                showError('Invalid phone number. Use Nigerian format (e.g., 08012345678 or +2348012345678)');
+                phoneNumberInput.focus();
+                return;
+            }
+
+            if (!amountStr) {
+                showError('Please enter an amount');
+                amountInput.focus();
+                return;
+            }
+
+            if (isNaN(amount)) {
+                showError('Please enter a valid number for amount');
+                amountInput.focus();
+                return;
+            }
+
+            if (!validateAmount(amount)) {
+                showError('Amount must be between ₦1 and ₦100,000');
+                amountInput.focus();
+                return;
+            }
+
+            // Check if user has sufficient balance
+            if (amount > accountBalance) {
+                showWarning(`Insufficient balance. You need ₦${amount.toFixed(2)} but have ₦${accountBalance.toFixed(2)}. Please fund your account.`);
+                return;
+            }
+
+            try {
+                // Show processing state
+                processButton.disabled = true;
+                processButton.innerHTML = '<span class="spinner"></span>Processing...';
+
+                // Simulate API request with delay
+                setTimeout(async () => {
+                    try {
+                        // Deduct amount from balance
+                        accountBalance -= amount;
+                        updateBalanceDisplay();
+                        
+                        // Add transaction to history
+                        addTransaction(serviceType, phoneNumber, amount, 'SUCCESS');
+                        
+                        // Show success message
+                        showSuccess(`Payment of ₦${amount.toFixed(2)} for ${serviceType} to ${phoneNumber} processed successfully!`);
+                        
+                        // Clear form fields
+                        phoneNumberInput.value = '';
+                        amountInput.value = '';
+                        
+                        // Reset button state
+                        processButton.disabled = false;
+                        processButton.textContent = 'Process Payment';
+                        
+                    } catch (error) {
+                        console.error('Error during payment:', error);
+                        showError('Transaction failed. Please try again.');
+                        
+                        // Reset button state
+                        processButton.disabled = false;
+                        processButton.textContent = 'Process Payment';
+                    }
+                }, 1500); // Simulate network delay
+
+            } catch (error) {
+                console.error('Transaction failed:', error);
+                
+                // Provide specific error messages based on error type
+                if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                    showError('Network error. Please check your internet connection and try again.');
+                } else if (error.name === 'SyntaxError') {
+                    showError('Received invalid response from server. Please try again.');
+                } else {
+                    showError('Transaction could not be completed. Please try again later.');
+                }
+                
+                // Reset button state in case of error
+                processButton.disabled = false;
+                processButton.textContent = 'Process Payment';
+            }
+        }
+
+        // Fund account modal handling
+        function openFundAccountModal() {
+            fundAccountModal.style.display = 'block';
+            fundAmountInput.value = '';
+            fundErrorDisplay.style.display = 'none';
+            selectedPaymentMethod = null;
+            
+            // Clear any selected payment method
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+        }
+
+        function closeFundAccountModal() {
+            fundAccountModal.style.display = 'none';
+        }
+
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            
+            // Update UI to show selected method
+            document.querySelectorAll('.payment-option').forEach(option => {
+                if (option.getAttribute('data-method') === method) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+        }
+
+        // Handle funding the account
+        async function fundAccount() {
+            const fundAmount = parseFloat(fundAmountInput.value);
+            
+            // Validate inputs
+            if (isNaN(fundAmount) || fundAmount < 100) {
+                showFundError('Please enter a valid amount (minimum ₦100)');
+                return;
+            }
+            
+            if (!selectedPaymentMethod) {
+                showFundError('Please select a payment method');
+                return;
+            }
+            
+            try {
+                // Show processing state
+                const confirmFundButton = document.getElementById('confirm-fund');
+                confirmFundButton.disabled = true;
+                confirmFundButton.innerHTML = '<span class="spinner"></span>Processing...';
+                
+                // Simulate API call to payment gateway
+                setTimeout(async () => {
+                    try {
+                        // Simulate successful funding
+                        accountBalance += fundAmount;
+                        updateBalanceDisplay();
+                        
+                        // Add to transaction history
+                        addTransaction('Account Funding', 'N/A', fundAmount, 'SUCCESS');
+                        
+                        // Close modal
+                        closeFundAccountModal();
+                        
+                        // Show success message
+                        showSuccess(`Your account has been successfully funded with ₦${fundAmount.toFixed(2)}`);
+                        
+                        // Reset button
+                        confirmFundButton.disabled = false;
+                        confirmFundButton.textContent = 'Continue';
+                        
+                    } catch (error) {
+                        showFundError('Error processing payment. Please try again.');
+                        
+                        // Reset button
+                        confirmFundButton.disabled = false;
+                        confirmFundButton.textContent = 'Continue';
+                    }
+                }, 2000); // Simulate 2-second processing time
+                
+            } catch (error) {
+                // FIXED: Removed duplicate catch block
+                showFundError('An unexpected error occurred. Please try again later.');
+                
+                // Reset button
+                const confirmFundButton = document.getElementById('confirm-fund');
+                confirmFundButton.disabled = false;
+                confirmFundButton.textContent = 'Continue';
+            }
+        }
+
+        // Initial setup when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize transaction history display
+            refreshTransactionHistory();
+            
+            // Add keyboard event listener for Enter key on form
+            form.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    processPayment();
+                }
+            });
+
+            // Add window click event listener to close modal if clicked outside
+            window.addEventListener('click', function(event) {
+                if (event.target === fundAccountModal) {
+                    closeFundAccountModal();
+                }
+            });
+
+            // Display a welcome message with instructions
+            setTimeout(() => {
+                showWarning('Welcome! Your account balance is ₦0.00. Please fund your account to purchase airtime or other services.');
+            }, 1000);
+            
+            // Add sample images for payment methods if they don't exist
+            createPlaceholderImages();
+        });
+        
+        // Function to create placeholder images for payment methods
+        function createPlaceholderImages() {
+            // Check if we need to create the public/img directory
+            const paths = [
+                'public/img/credit-card.png',
+                'public/img/bank-transfer.png',
+                'public/img/ussd.png',
+                'public/img/wallet.png'
+            ];
+            
+            // This is just a placeholder function since we can't access the file system directly from browser JavaScript
+            // In a real application, you would ensure these images exist on your server
+            console.log('Ensuring payment method images exist at:', paths);
+        }
+        
+        // Function to check network provider based on phone number
+        function getNetworkProvider(phoneNumber) {
+            // Clean the phone number
+            phoneNumber = phoneNumber.replace(/\D/g, '');
+            
+            // Remove country code if present
+            if (phoneNumber.startsWith('234')) {
+                phoneNumber = '0' + phoneNumber.substring(3);
+            }
+            
+            // Check network by prefix
+            if (/^(0803|0806|0703|0706|0813|0816|0810|0814|0903|0906|0913)/.test(phoneNumber)) {
+                return 'MTN';
+            } else if (/^(0805|0807|0705|0815|0811|0905|0915)/.test(phoneNumber)) {
+                return 'Glo';
+            } else if (/^(0802|0808|0708|0812|0901|0902|0904|0907|0912)/.test(phoneNumber)) {
+                return 'Airtel';
+            } else if (/^(0809|0818|0817|0908|0909)/.test(phoneNumber)) {
+                return '9Mobile';
+            } else {
+                return 'Unknown';
+            }
+        }
+        
+        // Function to format currency
+        function formatCurrency(amount) {
+            return '₦' + parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+        
+        // Enhanced payment processing with network detection
+        async function processPaymentEnhanced() {
+            // All validation remains the same
+            
+            const phoneNumber = phoneNumberInput.value.trim();
+            const amount = parseFloat(amountInput.value.trim());
+            const serviceType = serviceTypeSelect.value;
+            
+            // Detect network provider
+            const provider = getNetworkProvider(phoneNumber);
+            
+            if (provider === 'Unknown') {
+                showWarning('Could not determine network provider from the phone number. Please check and try again.');
+                return;
+            }
+            
+            showSuccess(`Processing ${provider} ${serviceType} for ${phoneNumber}...`);
+            
+            // Rest of processing code...
         }
     </script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

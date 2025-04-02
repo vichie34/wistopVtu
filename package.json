@@ -1,0 +1,21 @@
+{
+  "name": "virtual-top-up",
+  "version": "1.0.0",
+  "description": "Virtual Top Up Application",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "update-html": "node src/updateHtml.js",
+    "test": "node src/test-import.js"
+  },
+  "dependencies": {
+    "minimist": "^1.2.8",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
+

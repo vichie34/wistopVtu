@@ -160,20 +160,20 @@
                                 <div class="collapse navbar-collapse" id="investmentnavbar">
                                         <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                        <a class="nav-link" href="index">Home</a>
+                                                        <a class="nav-link" href="/">Home</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                        <a class="nav-link" href="about">About Us</a>
+                                                        <a class="nav-link" href="/about">About Us</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                        <a class="nav-link" href="blog">Services</a>
+                                                        <a class="nav-link" href="/blog">Services</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                        <a class="nav-link" href="faq">FAQ</a>
+                                                        <a class="nav-link" href="/faq">FAQ</a>
                                                 </li>
 
                                                 <li class="nav-item">
-                                                        <a class="nav-link" href="contact">Contact</a>
+                                                        <a class="nav-link" href="/contact">Contact</a>
                                                 </li>
 
                                         </ul>
@@ -224,10 +224,11 @@
                 <div class="container">
                         <div class="row">
                                 <div class="col-md-12">
-                                        <div id="register-form" class="form-block py-5">
+                                        <div id="registrationForm" class="form-block py-5">
                                                 <form class="login-form" action="" method="post">
                                                         <input type="hidden" name="_token" value="">
                                                         <div class="signin">
+                                                                <div id="message"></div> <!-- For displaying success/error messages -->
                                                                 <h3 class="title mb-30">SIGN UP FORM</h3>
 
                                                                 <div class="row">
@@ -238,36 +239,40 @@
                                                                                                 type="text"
                                                                                                 name="firstname"
                                                                                                 value=""
-                                                                                                placeholder="First Name">
+                                                                                                placeholder="Full Name">
+                                                                                                
                                                                                 </div>
                                                                         </div>
 
-                                                                        <div class="col-md-6">
-                                                                                <div class="form-group mb-30">
-                                                                                        <input class="form-control "
-                                                                                                type="text"
-                                                                                                name="lastname" value=""
-                                                                                                placeholder="Last Name">
-                                                                                </div>
-                                                                        </div>
 
                                                                         <div class="col-md-6">
                                                                                 <div class="form-group mb-30">
-                                                                                        <input class="form-control "
+                                                                                        <input id="username" class="form-control "
                                                                                                 id="register-username"
                                                                                                 type="text"
                                                                                                 name="username" value=""
-                                                                                                placeholder="Username">
+                                                                                                placeholder="Username"> 
+                                                                                                
                                                                                 </div>
                                                                         </div>
 
                                                                         <div class="col-md-6">
 
                                                                                 <div class="form-group mb-30">
-                                                                                        <input class="form-control"
+                                                                                        <input id="email" class="form-control"
                                                                                                 type="text" name="email"
                                                                                                 value=""
                                                                                                 placeholder="Email Address">
+                                                                                </div>
+                                                                        </div>
+
+
+                                                                        <div class="col-md-6">
+                                                                                <div id="username" class="form-group mb-30">
+                                                                                        <input id="referralCode" class="form-control "
+                                                                                                type="text"
+                                                                                                name="referralCode" value=""
+                                                                                                placeholder="Referral Code">
                                                                                 </div>
                                                                         </div>
 
@@ -2016,9 +2021,9 @@
 
                                                                         <div class="col-md-6">
                                                                                 <div class="form-group mb-20">
-                                                                                        <input class="form-control"
+                                                                                        <input id="conf" class="form-control"
                                                                                                 type="password"
-                                                                                                name="password_confirmation"
+                                                                                                name="confirmPassword"
                                                                                                 placeholder="Confirm Password">
                                                                                 </div>
                                                                         </div>
@@ -2030,12 +2035,13 @@
                                                                 <div class="btn-area">
                                                                         <button id="register-btn"
                                                                                 class="btn-login login-auth-btn"
-                                                                                type="submit"><span><a href="login">Sign Up</a></span>
+                                                                                type="submit"><span>Sign
+                                                                                                Up</span>
                                                                         </button>
                                                                 </div>
 
                                                                 <div class="login-query mt-30 text-center">
-                                                                        <a href="login">Already have an account?
+                                                                        <a href="/login">Already have an account?
                                                                                 Login</a>
                                                                 </div>
                                                         </div>
@@ -2164,10 +2170,8 @@
                         <div class="modal-login-body">
                                 <div class="btn-close">&times;</div>
                                 <div class="form-block">
-                                        <form class="login-form" id="login-form"
-                                                action="https://tokengrowth.org/loginModal" method="post">
-                                                <input type="hidden" name="_token"
-                                                        value="AetXVUPZhluEVuM7IBpzsY1DJ8rBtZCWHTGCCa53">
+                                        <form class="login-form" id="login-form" action="" method="post">
+                                                <input type="hidden" name="_token" value="">
                                                 <div class="signin">
                                                         <h3 class="title mb-30">Login</h3>
 
@@ -2203,7 +2207,8 @@
 
                                                         <div class="btn-area">
                                                                 <button class="btn-login login-auth-btn"
-                                                                        type="submit"><span><a href="dashboard">Login</a></span></button>
+                                                                        type="submit"><span><a
+                                                                                        href="dashboard">Login</a></span></button>
                                                         </div>
 
                                                         <div class="login-query mt-30 text-center">
@@ -2214,10 +2219,8 @@
                                         </form>
 
 
-                                        <form class="login-form" id="reset-form" method="post"
-                                                action="https://tokengrowth.org/password/email">
-                                                <input type="hidden" name="_token"
-                                                        value="AetXVUPZhluEVuM7IBpzsY1DJ8rBtZCWHTGCCa53">
+                                        <form class="login-form" id="reset-form" method="post" action="">
+                                                <input type="hidden" name="_token" value="">
                                                 <div class="reset-password">
                                                         <h3 class="title mb-30">Reset Password</h3>
                                                         <div class="form-group mb-30">
@@ -3479,7 +3482,8 @@
 
                                                         <div class="btn-area">
                                                                 <button class="btn-login login-signup-auth-btn"
-                                                                        type="submit"><span><a href="login">Sign Up</a></span>
+                                                                        type="submit"><span><a href="login">Sign
+                                                                                        Up</a></span>
                                                                 </button>
                                                         </div>
                                                         <div class="login-query mt-30 text-center">
@@ -3525,54 +3529,51 @@
 
         <script src="assets/themes/deepblue/js/script.js"></script>
 
-
         <script>
-                "use strict";
-                $(document).ready(function () {
-                        setDialCode();
-                        $(document).on('change', '.dialCode-change', function () {
-                                setDialCode();
-                        });
-                        function setDialCode() {
-                                let currency = $('.dialCode-change').val();
-                                $('.dialcode-set').val(currency);
+                // Get the form and message elements
+                const form = document.getElementById('registrationForm');
+                const messageDiv = document.getElementById('message');
+
+                // Attach the function to the form submission
+                form.addEventListener('submit', async (e) => {
+                        e.preventDefault(); // Prevent page reload
+
+                        // Collect input values
+                        const username = document.getElementById('username').value;
+                        const email = document.getElementById('email').value;
+                        // const password = document.getElementById('password').value;
+                        const confirmPassword = document.getElementById('confirmPassword').value;
+                        const referralCode = document.getElementById('referralCode').value;
+
+                        try {
+                                const response = await fetch('http://localhost:3200/api/users/register-user', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                                username,
+                                                password,
+                                                confirmPassword,
+                                                email,
+                                                referralCode: referralCode || undefined // Send only if provided
+                                        }),
+                                });
+
+                                const data = await response.json();
+
+                                if (!response.ok) throw new Error(data.message);
+
+                                // Display success message
+                                messageDiv.textContent = "Registration successful!";
+                                messageDiv.style.color = "green";
+                                form.reset(); // Clear the form
+
+                        } catch (error) {
+                                // Display error message
+                                messageDiv.textContent = `Registration failed: ${error.message}`;
+                                messageDiv.style.color = "red";
                         }
-
                 });
-
         </script>
-        <script>
-                "use strict";
-                $(document).ready(function () {
-                        setDialCode();
-                        $(document).on('change', '.dialCode-change', function () {
-                                setDialCode();
-                        });
-                        function setDialCode() {
-                                let currency = $('.dialCode-change').val();
-                                $('.dialcode-set').val(currency);
-                        }
-
-                });
-
-        </script>
-
-
-
-
-        <script>
-                $(document).ready(function () {
-                        $(".language").find("select").change(function () {
-                                window.location.href = "https://tokengrowth.org/language/" + $(this).val()
-                        })
-                })
-
-        </script>
-
-
 
 </body>
-
-<!-- Mirrored from tokengrowth.org/register by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Jan 2025 11:28:06 GMT -->
-
 </html>
